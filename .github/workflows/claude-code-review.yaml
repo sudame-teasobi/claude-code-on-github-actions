@@ -23,4 +23,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           prompt: "@.github/prompts/claude-code-review.md を参照してください。"
           claude_args: '--allowed-tools "Bash(gh issue view:*),Bash(gh search:*),Bash(gh issue list:*),Bash(gh pr comment:*),Bash(gh pr review:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr list:*),Bash(gh api *)"'
- 
