@@ -21,6 +21,13 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.ANTHROPIC_API_KEY }}      
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          prompt: "@.github/prompts/claude-code-review.md を参照してください。"
+          prompt: |
+            次の Pull Request をレビューしてください。
+
+            Repository: ${{ github.repository }}
+            Pull Request Number: ${{ github.event.pull_request.number }}
+            Pull Request Commit SHA: ${{ github.event.pull_request.head.sha }}
+ 
+            @.github/prompts/claude-code-review.md を参照してください。
           claude_args: '--allowed-tools "Bash(gh issue view:*),Bash(gh search:*),Bash(gh issue list:*),Bash(gh pr comment:*),Bash(gh pr review:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr list:*),Bash(gh api *)"'
  
