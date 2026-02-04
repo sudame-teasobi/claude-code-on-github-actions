@@ -1,0 +1,25 @@
+name: Review with Claude Code
+
+on:
+  - pull_request
+
+jobs:
+  review:
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+
+      - name: run claude code
+        uses: anthoropic/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}      
+          prompt: "@.github/prompts/claude-code-review.md を参照してください。"
+
+  
